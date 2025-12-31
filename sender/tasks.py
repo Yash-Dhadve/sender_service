@@ -3,7 +3,7 @@ import time
 import random
 import threading
 
-RECEIVER_URL = "https://receiver-service-8nwe.onrender.com/"
+RECEIVER_URL = "https://receiver-service-8nwe.onrender.com/api/receive/"
 
 def send_random_requests():
     while True:
