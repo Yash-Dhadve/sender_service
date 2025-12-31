@@ -19,7 +19,7 @@ def send_random_requests():
         }
 
         try:
-            response = requests.post(RECEIVER_URL, json=payload, timeout=10)
+            response = requests.post(RECEIVER_URL, json=payload, timeout=60)
             print("✅ Sent:", response.status_code)
         except Exception as e:
             print("❌ Error sending request:", e)
