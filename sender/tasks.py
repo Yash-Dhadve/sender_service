@@ -3,7 +3,7 @@ import time
 import random
 import threading
 
-RECEIVER_URL2 = "http://127.0.0.1:8000/api/receive/"
+RECEIVER_URL2 = "https://receiver-service-8nwe.onrender.com/api/receive/"
 RECEIVER_URL = "https://expo-t2be.onrender.com/"
 
 def send_random_requests():
