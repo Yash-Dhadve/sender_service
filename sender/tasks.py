@@ -8,7 +8,7 @@ RECEIVER_URL = "https://expo-t2be.onrender.com/"
 
 def send_random_requests():
     while True:
-        wait_time = random.randint(300, 400)  # 5–10 minutes
+        wait_time = random.randint(120, 180) 
         print(f"⏳ Waiting {wait_time} seconds...")
 
         time.sleep(wait_time)
