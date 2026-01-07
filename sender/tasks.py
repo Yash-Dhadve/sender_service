@@ -5,7 +5,7 @@ import threading
 
 RECEIVER_URL2 = "https://receiver-service-8nwe.onrender.com/api/receive/"
 RECEIVER_URL = "https://expo-t2be.onrender.com/"
-RECEIVER_URL3 = "https://web-modules-chpw.onrender.com"
+RECEIVER_URL3 = "https://web-modules-chpw.onrender.com/api/receive/"
 
 def send_random_requests():
     while True:
