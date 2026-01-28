@@ -3,7 +3,7 @@ import time
 import random
 import threading
 
-RECEIVER_URL2 = "https://receiver-service-8nwe.onrender.com/api/receive/"
+RECEIVER_URL2 = "https://receiver-service-l4yf.onrender.com/api/receive/"
 RECEIVER_URL = "https://expo-t2be.onrender.com/"
 RECEIVER_URL3 = "https://web-modules-chpw.onrender.com/api/receive/"
 RECEIVER_URL4 = "https://file-type-converter.onrender.com/api/receive/"
