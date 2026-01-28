@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>500 - Critical System Failure | Lightning Labs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #ff3b3b;
+      --secondary: #00f2ff;
+      --bg-dark: #050510;
+      --bg-red: #2a0d0d;
+      --glass: rgba(20, 20, 30, 0.6);
+      --glass-border: rgba(255, 59, 59, 0.3);
+    }
+
+    body {
+      margin: 0;
+      height: 100vh;
+      background: radial-gradient(circle at center, var(--bg-red), var(--bg-dark) 90%);
+      color: #fff;
+      font-family: 'Rajdhani', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* --- Background Grid Effect --- */
+    .bg-grid {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background-image: 
+        linear-gradient(rgba(255, 59, 59, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 59, 59, 0.05) 1px, transparent 1px);
+      background-size: 40px 40px;
+      z-index: -1;
+      perspective: 500px;
+      transform: scale(1.1);
+    }
+
+    .container {
+      text-align: center;
+      max-width: 600px;
+      padding: 50px;
+      background: var(--glass);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--glass-border);
+      box-shadow: 0 0 50px rgba(0,0,0,0.5);
+      position: relative;
+      /* "Cut corners" look */
+      clip-path: polygon(
+        20px 0, 100% 0, 
+        100% calc(100% - 20px), calc(100% - 20px) 100%, 
+        0 100%, 0 20px
+      );
+    }
+
+    /* --- Typography --- */
+    h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 8rem;
+      margin: 0;
+      color: var(--primary);
+      line-height: 0.9;
+      position: relative;
+      text-shadow: 0 0 30px rgba(255, 59, 59, 0.8);
+      animation: glitch 3s infinite alternate;
+    }
+
+    h1::after {
+      content: "500";
+      position: absolute;
+      left: 2px;
+      top: 0;
+      color: var(--secondary);
+      opacity: 0.5;
+      mix-blend-mode: overlay;
+      animation: glitch 2s infinite reverse;
+    }
+
+    h2 {
+      font-family: 'Orbitron', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-top: 10px;
+      font-size: 1.5rem;
+      border-bottom: 2px solid var(--primary);
+      display: inline-block;
+      padding-bottom: 5px;
+    }
+
+    p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      opacity: 0.9;
+      margin: 20px 0 30px;
+    }
+
+    /* --- Warning Badge --- */
+    .status-badge {
+      display: inline-block;
+      background: rgba(255, 59, 59, 0.2);
+      color: #ff8888;
+      padding: 5px 15px;
+      border: 1px solid var(--primary);
+      font-weight: bold;
+      letter-spacing: 1px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.8rem;
+      margin-bottom: 20px;
+      animation: pulse 2s infinite;
+    }
+
+    /* --- Button --- */
+    .btn {
+      display: inline-block;
+      padding: 15px 40px;
+      background: transparent;
+      border: 2px solid var(--primary);
+      color: var(--primary);
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      clip-path: polygon(10% 0, 100% 0, 100% 70%, 90% 100%, 0 100%, 0 30%);
+    }
+
+    .btn:hover {
+      background: var(--primary);
+      color: #000;
+      box-shadow: 0 0 25px rgba(255, 59, 59, 0.8);
+      transform: scale(1.05);
+    }
+
+    /* --- Technical Footer --- */
+    .tech-info {
+      margin-top: 30px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.4);
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 15px;
+    }
+
+    /* --- Animations --- */
+    @keyframes glitch {
+      0% { text-shadow: 2px 0 var(--secondary), -2px 0 var(--primary); }
+      25% { text-shadow: -2px 0 var(--secondary), 2px 0 var(--primary); }
+      50% { text-shadow: 2px 0 var(--secondary), -2px 0 var(--primary); opacity: 0.8; }
+      75% { text-shadow: -2px 0 var(--secondary), 2px 0 var(--primary); }
+      100% { text-shadow: 2px 0 var(--secondary), -2px 0 var(--primary); opacity: 1; }
+    }
+
+    @keyframes pulse {
+      0% { opacity: 0.6; }
+      50% { opacity: 1; box-shadow: 0 0 10px var(--primary); }
+      100% { opacity: 0.6; }
+    }
+    
+    @keyframes scanline {
+      0% { transform: translateY(-100%); }
+      100% { transform: translateY(100vh); }
+    }
+
+    /* Scanline overlay */
+    .scanline {
+      position: absolute;
+      width: 100%;
+      height: 20px;
+      background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0.05), rgba(255,255,255,0));
+      z-index: 10;
+      pointer-events: none;
+      animation: scanline 6s linear infinite;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg-grid"></div>
+  <div class="scanline"></div>
+
+  <div class="container">
+    <div class="status-badge">⚠ CRITICAL CONTAINMENT FAILURE</div>
+    
+    <h1>500</h1>
+    
+    <h2>Internal Server Error</h2>
+    
+    <p>
+      <strong>We have a situation.</strong><br>
+      The servers attempted to divide by zero and have created a localized singularity.
+      The engineering team is currently deploying duct tape and prayer.
+    </p>
+
+    <a href="/" class="btn">Initiate Emergency Retreat</a>
+
+    <div class="tech-info">
+      ERR_CODE: MELTDOWN_0x99 <br>
+      SECTOR: 7G // COOLANT: LOW
+    </div>
+  </div>
+
+</body>
+</html>

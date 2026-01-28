@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Lightning Labs | Future Energy Solutions</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #ff3b3b;
+      --secondary: #00f2ff;
+      --bg-dark: #050510;
+      --bg-red: #2a0d0d;
+      --glass: rgba(20, 20, 30, 0.7);
+      --glass-border: rgba(255, 59, 59, 0.3);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: radial-gradient(circle at top center, var(--bg-red), var(--bg-dark) 80%);
+      color: #fff;
+      font-family: 'Rajdhani', sans-serif; /* Readable body text */
+      font-size: 18px;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, .brand {
+      font-family: 'Orbitron', sans-serif; /* Sci-fi header text */
+      text-transform: uppercase;
+    }
+
+    /* --- Navigation --- */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      background: rgba(5, 5, 16, 0.85);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      border-bottom: 1px solid rgba(255, 59, 59, 0.2);
+      box-sizing: border-box;
+    }
+
+    .brand {
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: var(--primary);
+      text-shadow: 0 0 10px rgba(255, 59, 59, 0.6);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+    }
+
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1rem;
+      letter-spacing: 1px;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+      text-shadow: 0 0 8px var(--primary);
+    }
+
+    /* --- Hero Section --- */
+    header {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      padding: 0 20px;
+    }
+
+    header h1 {
+      font-size: 4rem;
+      margin: 0;
+      line-height: 1.1;
+      animation: flicker 4s infinite;
+    }
+
+    header h1 span {
+      color: var(--primary);
+      display: block;
+      font-size: 5.5rem;
+    }
+
+    header p {
+      max-width: 600px;
+      margin: 20px auto 40px;
+      opacity: 0.8;
+      font-size: 1.2rem;
+      line-height: 1.6;
+    }
+
+    .btn {
+      padding: 15px 40px;
+      background: transparent;
+      border: 2px solid var(--primary);
+      color: var(--primary);
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      text-transform: uppercase;
+      cursor: pointer;
+      text-decoration: none;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      clip-path: polygon(10% 0, 100% 0, 100% 70%, 90% 100%, 0 100%, 0 30%);
+    }
+
+    .btn:hover {
+      background: var(--primary);
+      color: #000;
+      box-shadow: 0 0 30px rgba(255, 59, 59, 0.6);
+      transform: scale(1.05);
+    }
+
+    .btn.secondary {
+      border-color: #fff;
+      color: #fff;
+      margin-left: 20px;
+    }
+
+    .btn.secondary:hover {
+      background: #fff;
+      box-shadow: 0 0 30px rgba(255, 255, 255, 0.4);
+    }
+
+    /* --- Features Grid --- */
+    .section {
+      padding: 100px 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      margin-bottom: 60px;
+      border-left: 5px solid var(--primary);
+      padding-left: 20px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .card {
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      padding: 30px;
+      transition: transform 0.3s, border-color 0.3s;
+      position: relative;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      border-color: var(--primary);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    .card h3 {
+      color: var(--primary);
+      margin-top: 0;
+    }
+
+    .card-icon {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      display: inline-block;
+    }
+
+    /* --- Stats Section --- */
+    .stats {
+      display: flex;
+      justify-content: space-around;
+      background: rgba(255, 59, 59, 0.05);
+      padding: 60px 20px;
+      border-top: 1px solid var(--glass-border);
+      border-bottom: 1px solid var(--glass-border);
+      margin: 50px 0;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+
+    .stat-box {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 3rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .stat-label {
+      color: var(--primary);
+      letter-spacing: 2px;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+    }
+
+    /* --- Footer --- */
+    footer {
+      text-align: center;
+      padding: 40px;
+      opacity: 0.5;
+      font-size: 0.8rem;
+      border-top: 1px solid #333;
+    }
+
+    /* --- Animations --- */
+    @keyframes flicker {
+      0%, 100% { opacity: 1; }
+      41% { opacity: 1; }
+      42% { opacity: 0.8; }
+      43% { opacity: 1; }
+      45% { opacity: 1; }
+      46% { opacity: 0.5; }
+      47% { opacity: 1; }
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+
+    .bg-grid {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background-image: 
+        linear-gradient(rgba(255, 59, 59, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 59, 59, 0.03) 1px, transparent 1px);
+      background-size: 50px 50px;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    /* Mobile Tweaks */
+    @media (max-width: 768px) {
+      header h1 { font-size: 2.5rem; }
+      header h1 span { font-size: 3.5rem; }
+      .nav-links { display: none; }
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg-grid"></div>
+
+  <nav>
+    <div class="brand">
+      <span>⚡</span> LIGHTNING LABS
+    </div>
+    <div class="nav-links">
+      <a href="#about">Research</a>
+      <a href="#experiments">Experiments</a>
+      <a href="#team">Team</a>
+      <a href="#contact">Access</a>
+    </div>
+  </nav>
+
+  <header>
+    <h1>
+      <h1>
+        We don't just write code. <br>
+        <span>WE OVERCLOCK THE WEB.</span>
+    </h1>
+    </h1>
+    <p>
+        Lightning Labs is a digital foundry specializing in high-velocity app development, 
+        volatile full-stack experiments, and software performance that pushes browsers to their melting point.
+    </p>
+    <div>
+      <a href="#experiments" class="btn">View Experiments</a>
+      <a href="#contact" class="btn secondary">Join the Lab</a>
+    </div>
+  </header>
+
+  <div class="stats">
+    <div class="stat-box">
+      <div class="stat-number">400%</div>
+      <div class="stat-label">Power Output</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-number">12</div>
+      <div class="stat-label">Containment Breaches (This Week)</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-number">0</div>
+      <div class="stat-label">Days Without Incident</div>
+    </div>
+  </div>
+
+  <section id="experiments" class="section">
+    <h2 class="section-title">Current Initiatives</h2>
+    
+    <div class="grid">
+      <div class="card">
+        <div class="card-icon">☢️</div>
+        <h3>Project Overload</h3>
+        <p>
+          Pushing lithium-ion batteries to 5000% capacity. Side effects may include rapid unplanned disassembly and localized weather patterns.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">⚡</div>
+        <h3>Wireless Transmission</h3>
+        <p>
+          Tesla was right, he just didn't have enough duct tape. We are currently beaming electricity across the parking lot.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🧊</div>
+        <h3>Cryo-Voltage</h3>
+        <p>
+          Supercooling conductors to absolute zero while blasting them with heavy metal music. Results are promising, but loud.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="section">
+    <div style="background: rgba(255, 59, 59, 0.1); padding: 40px; border: 1px dashed var(--primary); text-align: center;">
+      <h2 style="color: var(--primary);">⚠ Safety Protocol Alpha</h2>
+      <p>
+        Lightning Labs operates in a legal grey area regarding the laws of thermodynamics. 
+        Visitors are required to sign a waiver covering disintegration, timeline displacement, and accidental hair frizz.
+      </p>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <div class="bolt" style="font-size: 2rem; margin-bottom: 10px;">⚡</div>
+    <p>
+      Lightning Labs © <span id="year"></span> <br>
+      Do not touch exposed wires. We are not liable for dimension shifts.
+    </p>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+    
+    // Add a simple parallax effect to the background grid
+    window.addEventListener('scroll', () => {
+      const scrolled = window.scrollY;
+      document.querySelector('.bg-grid').style.backgroundPositionY = -(scrolled * 0.2) + 'px';
+    });
+  </script>
+
+</body>
+</html>
